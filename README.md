@@ -1,7 +1,16 @@
 # hello-world
-Just another hello world repository.
 
+This a hello world example.
 
-Added a change.
+## Build instructions:
 
-Added more stuff.
+1. Install gulp globally:
+
+...$ npm install --global gulp
+
+2. Get the dependencies:
+...$ npm install
+
+2. Run gulp:
+
+...$ gulp default
