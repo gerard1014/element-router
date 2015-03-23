@@ -1,0 +1,5 @@
+#ignore the following:
+node_modules/
+dist/
+demo/css/
+demo/js/vendor/
