@@ -1,16 +1,20 @@
-# hello-world
+# simple-router
 
-This a hello world example.
+This is a simple router based on Polymer 1.0:
+  - It only handles hash urls.
+  - It doesn't handle nested routes.
+  - Each route loads an element.
+  - The url parameters bind to the element's properties.
+  - The elements used must be preloaded with html imports.
+  - Any element works, even native dom like a textarea.
 
-## Build instructions:
+## Usage:
 
-1. Install gulp globally:
-
-...$ npm install --global gulp
-
-2. Get the dependencies:
-...$ npm install
-
-2. Run gulp:
-
-...$ gulp default
+```html
+<simple-router default="/" on-route-change="onRouteChange">
+  <simple-route path="/" element="home-page"></simple-route>
+  <simple-route path="/login" element="login-page"></simple-route>
+  <simple-route path="/users" element="users-page"></simple-route>
+  <simple-route path="/text/:textContent" element="textarea"></simple-route>
+</simple-router>
+```
