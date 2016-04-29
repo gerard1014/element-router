@@ -1,4 +1,4 @@
-# simple-router
+# element-router
 
 This is a simple router based on Polymer 1.0:
   - It only handles hash urls.
@@ -11,10 +11,10 @@ This is a simple router based on Polymer 1.0:
 ## Usage:
 
 ```html
-<simple-router default="/" on-route-change="onRouteChange">
-  <simple-route path="/" element="home-page"></simple-route>
-  <simple-route path="/login" element="login-page"></simple-route>
-  <simple-route path="/users" element="users-page"></simple-route>
-  <simple-route path="/text/:textContent" element="textarea"></simple-route>
-</simple-router>
+<element-router default="/" on-route-change="onRouteChange">
+  <element-route path="/" element="home-page"></element-route>
+  <element-route path="/login" element="login-page"></element-route>
+  <element-route path="/users" element="users-page"></element-route>
+  <element-route path="/text/:textContent" element="textarea"></element-route>
+</element-router>
 ```
