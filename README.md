@@ -1,4 +1,5 @@
-# element-router
+element-router
+===========
 
 This is a simple router based on Polymer 1.0:
   - It only handles hash urls.
@@ -8,7 +9,15 @@ This is a simple router based on Polymer 1.0:
   - The elements used must be preloaded with html imports.
   - Any element works, even native dom like a textarea.
 
-## Usage:
+Install
+-------
+
+```
+bower install element-router --save
+```
+
+Example
+-------
 
 ```html
 <element-router default="/" on-route-change="onRouteChange">
