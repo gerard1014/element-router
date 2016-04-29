@@ -3,7 +3,7 @@
   "description": "Simple router based on Polymer 1.0",
   "version": "0.1.0",
   "license": "MIT",
-  "authors": "Gerardo Lugo <gerard1014>"
+  "authors": "Gerardo Lugo <gerard1014>",
   "keywords": [
     "web-components",
     "polymer",
