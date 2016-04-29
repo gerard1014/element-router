@@ -1,14 +1,14 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="simple-route.html">
+<link rel="import" href="element-route.html">
 
-<dom-module id="simple-router">
+<dom-module id="element-router">
 	<template>
-		<content select="simple-route"></content>
+		<content select="element-route"></content>
 		<div id="container"></div>
 	</template>
 	<script>
 		Polymer({
-			is: 'simple-router',
+			is: 'element-router',
 
 			properties: {
 				'default': {
@@ -21,7 +21,7 @@
 				hash = hash || '';
 				var self = this;
 				var container = self.$.container;
-				var routes = self.querySelectorAll('simple-route');
+				var routes = self.querySelectorAll('element-route');
 
 				// remove all children from container.
 				while(container.firstChild) {
