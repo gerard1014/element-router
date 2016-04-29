@@ -1,5 +1,5 @@
 {
-  "name": "simple-router",
+  "name": "element-router",
   "description": "Simple router based on Polymer 1.0",
   "version": "0.1.0",
   "license": "MIT",
@@ -10,13 +10,13 @@
     "simple",
     "router"
   ],
-  "main": "simple-router.html",
+  "main": "element-router.html",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/gerard1014/simple-router.git"
+    "url": "git://github.com/gerard1014/element-router.git"
   },
-  "homepage": "https://github.com/gerard1014/simple-router",
+  "homepage": "https://github.com/gerard1014/element-router",
   "ignore": [
     "**/.*",
     "node_modules",
