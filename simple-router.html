@@ -1,0 +1,116 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="simple-route.html">
+
+<dom-module id="simple-router">
+	<template>
+		<content select="simple-route"></content>
+		<div id="container"></div>
+	</template>
+	<script>
+		Polymer({
+			is: 'simple-router',
+
+			properties: {
+				'default': {
+					type: String,
+					value: '/'
+				}
+			},
+
+			loadHash: function (hash) {
+				hash = hash || '';
+				var self = this;
+				var container = self.$.container;
+				var routes = self.querySelectorAll('simple-route');
+
+				// remove all children from container.
+				while(container.firstChild) {
+					container.removeChild(container.firstChild);
+				}
+				// loop routes and hash url parts divided by /.
+				for (var i = 0; i < routes.length; i++) {
+					var route = routes[i],
+						path = route.path || '',
+						routeParts = path.split('/'),
+						hashParts = hash.split('/');
+					//  test length first.
+					if (routeParts.length == hashParts.length) {
+						var params = {},
+							routeMatches = true;
+						// then test each part and parameters.
+						for (var j = 0; j < routeParts.length; j++) {
+							var routePart = routeParts[j];
+							var hashPart = hashParts[j];
+							if (routePart[0] === ':') {
+								if (!hashPart) {
+									// if there is a param with no value, is an invalid route.
+									routeMatches = false;
+									break;
+								}
+								// add the param values.
+								params[routePart.substring(1)] = hashPart;
+							} else if (routePart !== hashPart){
+								routeMatches = false;
+							}
+						}
+						// if the hash url matches, create the element and append it to the container.
+						if (routeMatches) {
+							var elementName = route.element || '';
+							var elementNameUpper = elementName.toUpperCase();
+							var element = document.createElement(elementNameUpper);
+							// add the params as the element properties.
+							for (var param in params) {
+								element[param] = params[param];
+							}
+							container.appendChild(element);
+
+							// set the active class to the corresponding elements with href.
+							var links = document.querySelectorAll('[href]');
+							var linksLength = links.length;
+							for (var k = 0; k < linksLength; k++) {
+								var link = links[k];
+								if (link.hash == ('#' + hash)) {
+									link.classList.add('active');
+								} else {
+									link.classList.remove('active');
+								}
+							}
+
+							// fire the route-change event.
+							self.fire('route-change', {
+								hash: hash,
+								path: path,
+								params: params,
+								element: element,
+								elementName: elementName
+							});
+							return;
+						}
+					}
+				}
+				// if the route doesn't match, use the default value.
+				window.location.hash = '#' + self['default'];
+			},
+
+			// private method for loading a the current has url.
+			_onHashChange: function () {
+				var hash = window.location.hash.substring(1);
+				this.loadHash(hash);
+			},
+			attached: function () {
+				var self = this;
+				// use a wrapper to keep scope.
+				self._temp_onHashChange = function () {
+					return self._onHashChange();
+				};
+				// add the hashchange listener.
+				window.addEventListener('hashchange', self._temp_onHashChange);
+				self._temp_onHashChange()
+			},
+			detached: function () {
+				// remove the hashchange listener.
+				window.removeEventListener('hashchange', this._temp_onHashChange);
+			}
+		});
+	</script>
+<dom-module>
