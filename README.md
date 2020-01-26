@@ -1,5 +1,5 @@
 element-router
-===========
+==============
 
 This is a simple router based on Polymer 1.0:
   - It only handles hash urls.
